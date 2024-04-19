@@ -1,1 +1,1 @@
-print("Hello, I'm from SelfHosted update 1")
+print("Hello, I'm from SelfHosted update 2")
