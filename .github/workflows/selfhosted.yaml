@@ -1,0 +1,37 @@
+name: SelfHosted
+
+on:
+  # schedule:
+  #   - cron: '*/2 * * * *'
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  
+
+  workflow_dispatch:
+
+
+jobs:
+  RealTimeStreaming:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: ['3.8', '3.9.10']
+      # - name: Run Dependencies
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install fastavro
+      #     pip install confluent-kafka
+      #     pip install requests
+
+      - name: Make script executable
+        run: chmod +x .github/workflows/helloworld.py
+
+      - name: Build and Publish - Self Hosted
+        run: 
+          python .github/workflows/helloworld.py
